@@ -1,14 +1,14 @@
 NAME = libftprintf.a
 
 SRC = ft_printf.c \
-	  ft_characters.c \
-	  ft_printdigit.c \
-	  ft_printstring.c \
-	  ft_printhex.c \
-	  ft_printpointer.c \
-	  ft_print_unsigned_digit.c \
-	  ft_strchr.c 
-	
+      ft_characters.c \
+      ft_printdigit.c \
+      ft_printstring.c \
+      ft_printhex.c \
+      ft_printpointer.c \
+      ft_print_unsigned_digit.c \
+      ft_strchr.c 
+
 OBJ = $(SRC:.c=.o) 
 
 CC = cc 
@@ -20,7 +20,10 @@ RM = rm -rf
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJ)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ) 
@@ -30,4 +33,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

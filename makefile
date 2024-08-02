@@ -7,6 +7,7 @@ SRC = ft_printf.c \
       ft_printhex.c \
       ft_printpointer.c \
       ft_print_unsigned_digit.c \
+      ft_strchr.c
 
 OBJ = $(SRC:.c=.o) 
 

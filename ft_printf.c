@@ -6,7 +6,7 @@
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 22:56:52 by imqandyl          #+#    #+#             */
-/*   Updated: 2024/08/02 10:00:28 by imqandyl         ###   ########.fr       */
+/*   Updated: 2024/08/02 13:21:10 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
+			while (!(ft_strchr("udixXcsp%", str[i])))
+				i++;
 			result += ft_formatspecifier(ap, str[i]);
 		}
 		else

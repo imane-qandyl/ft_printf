@@ -46,7 +46,7 @@ int	ft_printf(const char *str, ...)
 		{
 			i++;
 			if (!str[i] || !ft_strchr("udixXcsp%", str[i]))
-				result = ft_characters(str[i]);
+				result += ft_characters(str[i]);
 			result += ft_formatspecifier(ap, str[i]);
 		}
 		else

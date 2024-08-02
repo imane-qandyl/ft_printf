@@ -6,7 +6,7 @@
 /*   By: imqandyl <imqandyl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 22:44:00 by imqandyl          #+#    #+#             */
-/*   Updated: 2024/07/25 11:05:44 by imqandyl         ###   ########.fr       */
+/*   Updated: 2024/08/02 10:35:22 by imqandyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,41 @@
 
 int	ft_hex(unsigned int num, char hex_case)
 {
-	int	len;
+	char	c;
+	int		result;
 
-	len = 0;
-	if (num >= 0 && num <= 9)
-		len += ft_characters(num + '0');
-	else if (num >= 10 && num <= 15 && hex_case == 'x')
-		len += ft_characters(num - 10 + 'a');
-	else if (num >= 10 && num <= 15 && hex_case == 'X')
-		len += ft_characters(num - 10 + 'A');
-	return (len);
+	if (num < 0 || num > 15)
+		return (0);
+	if (num < 10)
+		c = num + '0';
+	else
+	{
+		if (hex_case == 'x')
+			c = num - 10 + 'a';
+		else
+			c = num - 10 + 'A';
+	}
+	result = ft_characters(c);
+	if (result == -1)
+		return (-1);
+	return (result);
 }
 
 int	ft_printhex(unsigned long num, char hex_case)
 {
 	int	len;
+	int	result;
 
 	len = 0;
 	if (num >= 16)
 	{
 		len += ft_printhex(num / 16, hex_case);
-		len += ft_printhex(num % 16, hex_case);
+		if (len == -1)
+			return (-1);
 	}
-	else
-		len += ft_hex(num, hex_case);
+	result = ft_hex(num % 16, hex_case);
+	if (result == -1)
+		return (-1);
+	len += result;
 	return (len);
 }

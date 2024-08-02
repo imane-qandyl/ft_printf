@@ -33,7 +33,7 @@ int	ft_formatspecifier(va_list list, char c)
 		return (ft_printhex(va_arg(list, unsigned int), c));
 	else if (c == '%')
 		return (ft_characters('%'));
-	return (-1);
+	return (0);
 }
 
 int	ft_printf(const char *str, ...)

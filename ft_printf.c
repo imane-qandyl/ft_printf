@@ -14,11 +14,6 @@
 
 int	ft_formatspecifier(va_list list, char c)
 {
-	int	len;
-	int	i;
-
-	len = 0;
-	i = 0;
 	if (c == 'c')
 		return (ft_characters(va_arg(list, int)));
 	else if (c == 's')
